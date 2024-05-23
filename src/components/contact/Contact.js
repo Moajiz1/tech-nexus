@@ -6,16 +6,13 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
-  Image,
   Input,
-  Stack,
   Text,
   Textarea,
   VStack,
   useToast,
 } from "@chakra-ui/react";
 import React from "react";
-import { contact } from "./contact";
 import { useForm } from "react-hook-form";
 
 export default function Contact() {
@@ -55,29 +52,36 @@ export default function Contact() {
     //   </Box>
     // </div>
 
-    <Box p={5}>
+    <Box height={"150%"} p={5}>
       {/* Header Section */}
       <Box textAlign="center" mb={10}>
-        <Heading as="h1" size="2xl" mb={4}>
+        <Heading
+          fontFamily={"monospace"}
+          color={"white"}
+          as="h1"
+          size="2xl"
+          mb={4}
+        >
           Contact Us
         </Heading>
-        <Text fontSize="xl">
+        <Text fontSize="xl" fontFamily={"monospace"} color={"white"}>
           We would love to hear from you! Please fill out the form below to get
           in touch with us.
         </Text>
-        <Image
-          src="https://images.unsplash.com/photo-1581092334663-76b663540db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-          alt="Contact Us"
-          borderRadius="md"
-          mt={6}
-        />
       </Box>
 
       <Divider />
 
       {/* Contact Form Section */}
       <Box mt={10} maxWidth="600px" mx="auto">
-        <Heading as="h2" size="lg" mb={6} textAlign="center">
+        <Heading
+          fontFamily={"monospace"}
+          color={"white"}
+          as="h2"
+          size="lg"
+          mb={6}
+          textAlign="center"
+        >
           Get in Touch
         </Heading>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -85,6 +89,7 @@ export default function Contact() {
             <FormControl isInvalid={errors.name}>
               <FormLabel htmlFor="name">Name</FormLabel>
               <Input
+                textColor={"white"}
                 id="name"
                 placeholder="Your Name"
                 {...register("name", {
@@ -103,6 +108,7 @@ export default function Contact() {
             <FormControl isInvalid={errors.email}>
               <FormLabel htmlFor="email">Email</FormLabel>
               <Input
+                textColor={"white"}
                 id="email"
                 type="email"
                 placeholder="Your Email"
@@ -122,6 +128,7 @@ export default function Contact() {
             <FormControl isInvalid={errors.message}>
               <FormLabel htmlFor="message">Message</FormLabel>
               <Textarea
+                textColor={"white"}
                 id="message"
                 placeholder="Your Message"
                 {...register("message", {

@@ -5,18 +5,21 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Blogs from "./components/blogposts/Blogs";
 import Contact from "./components/contact/Contact";
 import HomePage from "./components/home/Home";
+import { Box } from "@chakra-ui/react";
 
 function App() {
   return (
     <Router>
       <div>
         <Navbar />
-        <Routes>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <Box className="App-tier">
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Box>
       </div>
     </Router>
   );

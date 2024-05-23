@@ -1,5 +1,4 @@
 import React from "react";
-import { about } from "./about";
 import {
   Box,
   Divider,
@@ -41,7 +40,7 @@ export default function About() {
     <Box p={5}>
       <VStack spacing={5} align="stretch">
         <Box textAlign="center">
-          <Heading as="h1" size="2xl" mb={4}>
+          <Heading color={"white"} as="h1" size="2xl" mb={4}>
             About Tech Nexus
           </Heading>
         </Box>
@@ -49,7 +48,7 @@ export default function About() {
         <Divider />
 
         <Box>
-          <Text fontSize="xl" mb={4}>
+          <Text color={"white"} fontSize="xl" mb={4}>
             Tech Nexus was founded by a group of tech aficionados with a mission
             to make technology accessible and understandable to everyone. We
             believe that technology has the power to change the world, and we
@@ -62,10 +61,10 @@ export default function About() {
         <Divider />
 
         <Box>
-          <Heading as="h2" size="lg" mb={4}>
+          <Heading color={"white"} as="h2" size="lg" mb={4}>
             Our Mission
           </Heading>
-          <Text fontSize="lg">
+          <Text fontSize="lg" color={"white"}>
             Our mission is to be the premier source of tech knowledge and
             innovation. We strive to bring you the latest in technological
             advancements and insights, enabling you to stay ahead in the
@@ -78,10 +77,10 @@ export default function About() {
         <Divider />
 
         <Box>
-          <Heading as="h2" size="lg" mb={4}>
+          <Heading color={"white"} as="h2" size="lg" mb={4}>
             Our Team
           </Heading>
-          <VStack align="stretch" spacing={4}>
+          <VStack color={"white"} align="stretch" spacing={4}>
             <HStack spacing={4}>
               <Image
                 borderRadius="full"
@@ -142,7 +141,7 @@ export default function About() {
 
         <Divider />
 
-        <Box>
+        <Box color={"white"}>
           <Heading as="h2" size="lg" mb={4}>
             Join Us
           </Heading>
