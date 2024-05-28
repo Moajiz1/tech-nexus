@@ -7,36 +7,15 @@ import {
   Image,
   Text,
   VStack,
+  Link,
+  IconButton,
+  Stack,
 } from "@chakra-ui/react";
+
+import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function About() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>We ara about to build tech blog web site</p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Tech Nexus
-    //     </a>
-    //   </header>
-    // </div>
-
-    // <Box p={4}>
-    //   <Heading as="h1" mb={4}>
-    //     {about.title}
-    //   </Heading>
-    //   <Text mb={4}>{about.content}</Text>
-    //   <Heading as="h2" size="md">
-    //     About the Author
-    //   </Heading>
-    //   <Text>{about.bio}</Text>
-    // </Box>
-
     <Box p={5}>
       <VStack spacing={5} align="stretch">
         <Box textAlign="center">
@@ -48,7 +27,7 @@ export default function About() {
         <Divider />
 
         <Box>
-          <Text color={"white"} fontSize="xl" mb={4}>
+          <Text fontFamily={"monospace"} color={"white"} fontSize="xl" mb={4}>
             Tech Nexus was founded by a group of tech aficionados with a mission
             to make technology accessible and understandable to everyone. We
             believe that technology has the power to change the world, and we
@@ -61,10 +40,16 @@ export default function About() {
         <Divider />
 
         <Box>
-          <Heading color={"white"} as="h2" size="lg" mb={4}>
+          <Heading
+            fontFamily={"monospace"}
+            color={"white"}
+            as="h2"
+            size="lg"
+            mb={4}
+          >
             Our Mission
           </Heading>
-          <Text fontSize="lg" color={"white"}>
+          <Text fontFamily={"monospace"} fontSize="lg" color={"white"}>
             Our mission is to be the premier source of tech knowledge and
             innovation. We strive to bring you the latest in technological
             advancements and insights, enabling you to stay ahead in the
@@ -90,11 +75,11 @@ export default function About() {
               />
               <Box>
                 <Heading as="h3" size="md">
-                  John Doe
+                  Irzam Khan
                 </Heading>
                 <Text>Founder & CEO</Text>
                 <Text>
-                  John has over 20 years of experience in the tech industry,
+                  Irzam has over 20 years of experience in the tech industry,
                   leading innovative projects and startups.
                 </Text>
               </Box>
@@ -108,11 +93,11 @@ export default function About() {
               />
               <Box>
                 <Heading as="h3" size="md">
-                  Jane Smith
+                  Ali Moajiz
                 </Heading>
                 <Text>Chief Technology Officer</Text>
                 <Text>
-                  Jane is a tech visionary with a passion for developing
+                  Ali is a tech visionary with a passion for developing
                   cutting-edge solutions and mentoring young tech enthusiasts.
                 </Text>
               </Box>
@@ -126,11 +111,11 @@ export default function About() {
               />
               <Box>
                 <Heading as="h3" size="md">
-                  Alice Johnson
+                  Sher Ali
                 </Heading>
                 <Text>Head of Content</Text>
                 <Text>
-                  Alice is dedicated to creating informative and engaging
+                  Sher is dedicated to creating informative and engaging
                   content, ensuring that our readers get the most out of our
                   site.
                 </Text>
@@ -153,6 +138,40 @@ export default function About() {
           </Text>
         </Box>
       </VStack>
+      <Stack direction="row" spacing={4} mt={6} mb={6}>
+        <IconButton
+          icon={<FaTwitter />}
+          aria-label="Twitter"
+          variant="outline"
+          colorScheme="twitter"
+        />
+        <IconButton
+          icon={<FaFacebook />}
+          aria-label="Facebook"
+          variant="outline"
+          colorScheme="facebook"
+        />
+        <IconButton
+          icon={<FaLinkedin />}
+          aria-label="LinkedIn"
+          variant="outline"
+          colorScheme="linkedin"
+        />
+        <IconButton
+          icon={<FaInstagram />}
+          aria-label="Instagram"
+          variant="outline"
+          colorScheme="pink"
+        />
+      </Stack>
+      <Text color={"white"} mb={4}>
+        Connect with us on social media to stay updated with our latest news,
+        products, and events.
+      </Text>
+      <Text color={"white"}>
+        For inquiries and collaborations, please email us at{" "}
+        <Link href="mailto:info@technexus.com">info@technexus.com</Link>
+      </Text>
     </Box>
   );
 }

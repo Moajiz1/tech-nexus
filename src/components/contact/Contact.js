@@ -87,7 +87,9 @@ export default function Contact() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <VStack spacing={5}>
             <FormControl isInvalid={errors.name}>
-              <FormLabel htmlFor="name">Name</FormLabel>
+              <FormLabel color={"white"} htmlFor="name">
+                Name
+              </FormLabel>
               <Input
                 textColor={"white"}
                 id="name"
@@ -106,7 +108,9 @@ export default function Contact() {
             </FormControl>
 
             <FormControl isInvalid={errors.email}>
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel color={"white"} htmlFor="email">
+                Email
+              </FormLabel>
               <Input
                 textColor={"white"}
                 id="email"
@@ -126,7 +130,9 @@ export default function Contact() {
             </FormControl>
 
             <FormControl isInvalid={errors.message}>
-              <FormLabel htmlFor="message">Message</FormLabel>
+              <FormLabel color={"white"} htmlFor="message">
+                Message
+              </FormLabel>
               <Textarea
                 textColor={"white"}
                 id="message"
