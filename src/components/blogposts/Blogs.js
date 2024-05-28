@@ -1,157 +1,167 @@
 import {
   Box,
   Button,
+  FormControl,
+  FormLabel,
   Grid,
   GridItem,
   Heading,
   Image,
+  Input,
   Link,
   Text,
+  Textarea,
+  VStack,
+  useToast,
 } from "@chakra-ui/react";
 import React from "react";
-import futureOfAI from "./Future_Of_Artificial_Intelligence.avif";
-import blockchain from "./Blockchain Technology.jpg";
-import gadgets from "./gadgets-logo-8647845AA1-seeklogo.com.png";
-import quantum from "./quantum-computing.jpg";
-import fiveG from "./960x0.webp";
-import smartHome from "./Smarthome_Illustration-1024x939.jpg";
-import electricV from "./electric-car-freepik.avif";
-import bigData from "./1685965315663.jpeg";
-import cybersecurity from "./what-is-cybersecurity.jpg";
-import aiImpact from "./Future_Of_Artificial_Intelligence.avif";
+
+import BlogsScreen from "../blogs-screen/Blogs-Screen";
+import { posts } from "./blogs-data";
+import { useNavigate } from "react-router-dom";
 
 export default function Blogs() {
-  const posts = [
-    {
-      title: "The Future of AI: What to Expect",
-      summary:
-        "Artificial Intelligence is transforming the world. Discover the trends and predictions...",
-      imageUrl: futureOfAI,
-      link: "#",
-    },
-    {
-      title: "Blockchain Beyond Cryptocurrency",
-      summary:
-        "Blockchain technology is more than just Bitcoin. Explore its applications in various industries.",
-      imageUrl: blockchain,
-      link: "#",
-    },
-    {
-      title: "Top 10 Gadgets of 2024",
-      summary:
-        "From smart home devices to the latest in wearable tech, check out the must-have gadgets of the year.",
-      imageUrl: gadgets,
-      link: "#",
-    },
-    {
-      title: "Quantum Computing",
-      summary:
-        "Quantum computers are set to revolutionize technology. Learn about their potential...",
-      imageUrl: quantum,
-      link: "#",
-    },
-    {
-      title: "5G Technology: Pros and Cons",
-      summary:
-        "5G is the next big leap in mobile technology. Understand its benefits and the challenges it faces.",
-      imageUrl: fiveG,
-      link: "#",
-    },
+  const [selectedPost, setSelectedPost] = React.useState(null);
+  const [componentState, setComponentState] = React.useState(false);
 
-    {
-      title: "The Evolution of Smart Homes",
-      summary:
-        "Smart home technology is rapidly advancing. Explore the latest innovations making homes more intelligent and connected.",
-      imageUrl: smartHome,
-      link: "#",
-    },
-    {
-      title: "Electric Vehicles: The Road Ahead",
-      summary:
-        "EVs are becoming more popular each day. Learn about the future of electric vehicles and their impact on the environment.",
-      imageUrl: electricV,
-      link: "#",
-    },
-    {
-      title: "The Role of Big Data in Healthcare",
-      summary:
-        "Big data is transforming healthcare. See how data analytics is improving patient care and medical research in daily bussiness.",
-      imageUrl: bigData,
-      link: "#",
-    },
-    {
-      title: "Cybersecurity Trends 2024",
-      summary:
-        "Cyber threats are evolving. Stay ahead with insights into the latest trends in cybersecurity and systems of security world.",
-      imageUrl: cybersecurity,
-      link: "#",
-    },
+  const [title, setTitle] = React.useState("");
+  const [content, setContent] = React.useState("");
+  const toast = useToast();
+  const navigate = useNavigate();
 
-    {
-      title: "The Impact of AI on Job Markets",
-      summary:
-        "AI is changing the job landscape. Understand how artificial intelligence is affecting employment and what to expect.",
-      imageUrl: aiImpact,
-      link: "#",
-    },
-  ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newBlog = { title, content };
+    console.log("New Blog:", newBlog);
 
+    // Show a success toast
+    toast({
+      title: "Blog created.",
+      description: "Your new blog has been successfully saved.",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+
+    // Reset form fields
+    setTitle("");
+    setContent("");
+    navigate("/");
+  };
   return (
     <>
-      <Box p={5}>
-        <Box textAlign="center" mb={10}>
-          <Heading
-            fontFamily={"serif"}
-            color={"white"}
-            as="h1"
-            size="2xl"
-            mb={4}
-          >
-            Our Blog
-          </Heading>
-          <Text color={"white"} fontFamily={"monospace"} fontSize="xl">
-            Stay updated with the latest trends, insights, and innovations in
-            the tech world.
-          </Text>
-        </Box>
-
-        <Grid
-          fontFamily={"monospace"}
-          color={"white"}
-          templateColumns="repeat(auto-fit, minmax(300px, 1fr))"
-          gap={6}
-        >
-          {posts.map((post, index) => (
-            <GridItem height={"100%"} key={index} w="100%">
-              <Box
-                _hover={{
-                  bg: "red.900",
-                  color: "white",
-                  transform: "scale(1.05)",
-                }}
-                borderWidth="1px"
-                borderRadius="lg"
-                overflow="auto"
-                height={500}
+      {selectedPost && (
+        <BlogsScreen
+          setSelectedPost={setSelectedPost}
+          selectedPost={selectedPost}
+        />
+      )}
+      {!selectedPost && (
+        <Box p={5}>
+          <Box textAlign="center" mb={10}>
+            <Heading
+              fontFamily={"serif"}
+              color={"white"}
+              as="h1"
+              size="2xl"
+              mb={4}
+            >
+              Our Blog
+            </Heading>
+            <Text color={"white"} fontFamily={"monospace"} fontSize="xl">
+              Stay updated with the latest trends, insights, and innovations in
+              the tech world.
+            </Text>
+          </Box>
+          {!componentState && (
+            <Box mb={10}>
+              <Button
+                onClick={() => setComponentState(true)}
+                colorScheme={"whatsapp"}
               >
-                <Image src={post.imageUrl} alt={post.title} />
+                Add blog
+              </Button>
+            </Box>
+          )}
 
-                <Box p={6}>
-                  <Heading as="h3" size="lg" mb={2}>
-                    <Link href={post.link} color="teal.500">
-                      {post.title}
-                    </Link>
-                  </Heading>
-                  <Text mb={4}>{post.summary}</Text>
-                  <Link href={post.link}>
-                    <Button colorScheme="teal">Read More</Button>
-                  </Link>
-                </Box>
-              </Box>
-            </GridItem>
-          ))}
-        </Grid>
-      </Box>
+          {!componentState && (
+            <Grid
+              fontFamily={"monospace"}
+              color={"white"}
+              templateColumns="repeat(auto-fit, minmax(300px, 1fr))"
+              gap={6}
+            >
+              {posts.map((post, index) => (
+                <GridItem height={"100%"} key={index} w="100%">
+                  <Box
+                    _hover={{
+                      bg: "red.900",
+                      color: "white",
+                      transform: "scale(1.05)",
+                    }}
+                    borderWidth="1px"
+                    borderRadius="lg"
+                    overflow="auto"
+                    height={500}
+                    onClick={() => console.log(setSelectedPost(post))}
+                  >
+                    <Image src={post.imageUrl} alt={post.title} />
+
+                    <Box p={6}>
+                      <Heading as="h3" size="lg" mb={2}>
+                        <Link href={post.link} color="teal.500">
+                          {post.title}
+                        </Link>
+                      </Heading>
+                      <Text mb={4}>{post.summary}</Text>
+                      <Link href={post.link}>
+                        <Button colorScheme="teal">Read More</Button>
+                      </Link>
+                    </Box>
+                  </Box>
+                </GridItem>
+              ))}
+            </Grid>
+          )}
+
+          {componentState && (
+            <Box maxW="md" mx="auto" mt={10}>
+              <Heading color={"white"} as="h1" mb={6}>
+                Add New Blog
+              </Heading>
+              <form onSubmit={handleSubmit}>
+                <VStack spacing={4}>
+                  <FormControl id="title" isRequired>
+                    <FormLabel color={"white"}>Title</FormLabel>
+                    <Input
+                      color={"white"}
+                      type="text"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+                  </FormControl>
+                  <FormControl id="content" isRequired>
+                    <FormLabel color={"white"}>Content</FormLabel>
+                    <Textarea
+                      color={"white"}
+                      value={content}
+                      onChange={(e) => setContent(e.target.value)}
+                    />
+                  </FormControl>
+                  <Button
+                    type="submit"
+                    colorScheme="teal"
+                    size="md"
+                    width="full"
+                  >
+                    Submit
+                  </Button>
+                </VStack>
+              </form>
+            </Box>
+          )}
+        </Box>
+      )}
     </>
   );
 }
